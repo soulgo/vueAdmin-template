@@ -71,6 +71,30 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/vuex',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'vuex',
+        component: () => import('@/views/vuex-demo/index'),
+        meta: { title: 'VuexDemo', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/idcs',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'Idcs',
+        component: () => import('@/views/idcs/index'),
+        meta: { title: 'Idcs', icon: 'tree' }
+      }
+    ]
+  },
 
   {
     path: '/nested',
