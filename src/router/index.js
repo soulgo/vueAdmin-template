@@ -58,7 +58,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/form',
     component: Layout,
@@ -92,6 +91,18 @@ export const constantRouterMap = [
         name: 'Idcs',
         component: () => import('@/views/idcs/index'),
         meta: { title: 'Idcs', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/manufacturer',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'manufacturer',
+        component: () => import('@/views/manufacturer/index'),
+        meta: { title: 'manufacturer', icon: 'tree' }
       }
     ]
   },

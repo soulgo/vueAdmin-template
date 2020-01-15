@@ -48,6 +48,7 @@ export default {
       getUserList(this.params).then(res => {
         this.totalNum = res.count
         this.tableData = res.results
+        console.log(this.totalNum)
       })
     },
     handleCurrentChange(val) {
