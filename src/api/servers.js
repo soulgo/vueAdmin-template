@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getList(params) {
+export function getServerList(params) {
   return request({
-    url: '/table/list',
+    url: '/server/',
     method: 'get',
     params
   })

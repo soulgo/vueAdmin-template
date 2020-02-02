@@ -54,8 +54,10 @@
     },
     methods: {
       fetchData() {
+        console.log('获取list')
         getmanufacturerList().then(
           res => {
+            console.log(res)
             this.manufacturer = res.data.results
           }
         )
