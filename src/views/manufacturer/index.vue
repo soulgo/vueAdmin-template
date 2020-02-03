@@ -3,6 +3,15 @@
       <el-button type="primary" @click="add" size="small">新增</el-button>
       <manufacturer-list :value="manufacturer" @edit="handleEdit" @delete="handleDelete">
       </manufacturer-list>
+      <div style="text-align: center;margin-top: 10px" v-show="totalNum>=8">
+        <el-pagination
+          background
+          :page-size="8"
+          layout="total,prev, pager, next"
+          @current-change="handleCurrentChange"
+          :total="totalNum">
+        </el-pagination>
+      </div>
       <div>
         <el-dialog
           title="新增"
@@ -15,20 +24,19 @@
             @cancel="handleCancelAdd"
           ></manufacturer-form>
           </el-dialog>
-                  <el-dialog
-                    title="修改"
-                    :visible.sync="dialogVisibleFormEdit"
-                    width="50%">
-                    <manufacturer-form
-                      ref="manufacturerform"
-                      :is-loading="isLoadingEditManufacturer"
-                      :form="currentValue"
-                      @submit="handleSubmitEdit"
-                      @cancel="handleCancelEdit"
-                    ></manufacturer-form>
+        <el-dialog
+            title="修改"
+            :visible.sync="dialogVisibleFormEdit"
+            width="50%">
+            <manufacturer-form
+              ref="manufacturerform"
+              :is-loading="isLoadingEditManufacturer"
+              :form="currentValue"
+              @submit="handleSubmitEdit"
+              @cancel="handleCancelEdit"
+            ></manufacturer-form>
           </el-dialog>
       </div>
-
     </div>
 </template>
 
@@ -49,18 +57,28 @@
         manufacturer: [],
         currentValue: {},
         isLoadingCreateManufacturer: false,
-        isLoadingEditManufacturer: false
+        isLoadingEditManufacturer: false,
+        totalNum: 0,
+        params: {
+          page: 1
+        }
       }
+    },
+    created() {
+      this.fetchData()
     },
     methods: {
       fetchData() {
-        console.log('获取list')
-        getmanufacturerList().then(
+        getmanufacturerList(this.params).then(
           res => {
-            console.log(res)
+            this.totalNum = res.data.count
             this.manufacturer = res.data.results
           }
         )
+      },
+      handleCurrentChange(val) {
+        this.params.page = val
+        this.fetchData()
       },
       add() {
         this.dialogVisibleFormAdd = true
@@ -84,6 +102,7 @@
         const { id, ...params } = value
         updatemanufacturer({ id, params }).then(
           () => {
+            console.log('测试2')
             this.fetchData()
             this.handleCancelEdit()
             this.isLoadingEditManufacturer = false
@@ -116,9 +135,6 @@
           }
         )
       }
-    },
-    created() {
-      this.fetchData()
     }
   }
 </script>

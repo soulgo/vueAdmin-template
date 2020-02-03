@@ -82,7 +82,6 @@
     methods: {
       fetchData() {
         getServerList(this.params).then(res => {
-          console.log('server   res::::::' + res)
           this.serverList = res.results
         })
       }

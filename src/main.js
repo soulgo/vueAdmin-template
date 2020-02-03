@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 import 'normalize.css/normalize.css'// A modern alternative to CSS resets
-
+import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
@@ -18,10 +18,11 @@ import '@/permission' // permission control
 Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
-
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-fromurlencodeed'
 new Vue({
   el: '#app',
   router,
   store,
   render: h => h(App)
 })
+

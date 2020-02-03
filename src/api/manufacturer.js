@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export function getmanufacturerList() {
-  return axios.get('/api/manufacturer/')
+export function getmanufacturerList(params) {
+  return axios.get(`/api/manufacturer/?page=${params.page}`, params.page)
 }
 
 export function createmanufacturer(value) {

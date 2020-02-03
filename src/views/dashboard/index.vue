@@ -17,15 +17,14 @@
       label="电子邮箱">
     </el-table-column>
     </el-table>
-  <div style="text-align: center;margin-top: 10px" v-show="totalNum>=10">
+    <div style="text-align: center;margin-top: 10px" v-show="totalNum>=10">
     <el-pagination
       background
       layout="total,prev, pager, next"
       @current-change="handleCurrentChange"
       :total="totalNum">
     </el-pagination>
-  </div>
-  </div>
+  </div></div>
 </template>
 
 <script>
@@ -48,7 +47,6 @@ export default {
       getUserList(this.params).then(res => {
         this.totalNum = res.count
         this.tableData = res.results
-        console.log(this.totalNum)
       })
     },
     handleCurrentChange(val) {

@@ -83,6 +83,5 @@
 
 <style scoped>
 .manufacturer-list {
-
 }
 </style>
