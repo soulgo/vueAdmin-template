@@ -84,6 +84,36 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/books',
+    component: Layout,
+    redirect: '/books/book',
+    name: '图书管理系统',
+    meta: {
+      title: '图书管理系统',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'book',
+        name: '图书',
+        component: () => import('@/views/books/book/index'),
+        meta: { title: '图书', icon: 'tree' }
+      },
+      {
+        path: 'author',
+        name: '作者',
+        component: () => import('@/views/books/author/index'),
+        meta: { title: '作者', icon: 'tree' }
+      },
+      {
+        path: 'publish',
+        name: '出版社',
+        component: () => import('@/views/books/publish/index'),
+        meta: { title: '出版社', icon: 'tree' }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
