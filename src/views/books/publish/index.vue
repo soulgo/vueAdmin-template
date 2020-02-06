@@ -35,11 +35,11 @@
       </publish-form>
     </el-dialog>
       <!--分页-->
-      <div style="text-align: center;margin-top: 10px" v-show="totalNum>=4">
+      <div style="text-align: center;margin-top: 10px" v-show="totalNum>=5">
         <el-pagination
           background
           layout="total, prev, pager, next"
-          :page-size="4"
+          :page-size="5"
           :total="totalNum"
           @current-change="handleCurrentChange">
         </el-pagination>
@@ -77,8 +77,8 @@
       fetchData() {
         getPublishList(this.params).then(
           res => {
-            this.totalNum = res.data.count
-            this.publishs = res.data.results
+            this.totalNum = res.count
+            this.publishs = res.results
           }
         )
       },
@@ -120,7 +120,6 @@
       handleSubmitEdit(value) {
         const { id, ...params } = value
         updatePublish({ id, params }).then(res => {
-          console.log(res)
           this.$message({
             message: '更新成功',
             type: 'success'

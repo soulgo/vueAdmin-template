@@ -1,18 +1,36 @@
-import axios from 'axios'
+import request from '@/utils/request'
 
+// 获取出版社列表
 export function getPublishList(params) {
-  return axios.get(`/api/publish/?page=${params.page}&search=${params.search}`, params.page, params.search)
+  return request({
+    url: '/publish/',
+    method: 'get',
+    params
+  })
 }
 
-export function createPublish(value) {
-  return axios.post('/api/publish/', value)
+// 创建出版社
+export function createPublish(data) {
+  return request({
+    url: '/publish/',
+    method: 'post',
+    data
+  })
 }
 
-export function updatePublish(value) {
-  return axios.put(`/api/publish/${value.id}/`, value.params)
+// 修改出版社
+export function updatePublish(id, data) {
+  return request({
+    url: '/publish/' + id + '/',
+    method: 'put',
+    data
+  })
 }
 
+// 删除出版社
 export function deletePublish(id) {
-  return axios.delete(`/api/publish/${id}/`)
+  return request({
+    url: '/publish/' + id + '/',
+    method: 'delete'
+  })
 }
-
