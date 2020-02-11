@@ -5,7 +5,6 @@ export function getPublishList(params) {
   return axios.get('/api/publish/', params)
 }
 
-
 export function createPublish(value) {
   return axios.post('/api/publish/', value)
 }

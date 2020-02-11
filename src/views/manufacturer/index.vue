@@ -71,8 +71,8 @@
       fetchData() {
         getmanufacturerList(this.params).then(
           res => {
-            this.totalNum = res.data.count
-            this.manufacturer = res.data.results
+            this.totalNum = res.count
+            this.manufacturer = res.results
           }
         )
       },
@@ -102,7 +102,6 @@
         const { id, ...params } = value
         updatemanufacturer({ id, params }).then(
           () => {
-            console.log('测试2')
             this.fetchData()
             this.handleCancelEdit()
             this.isLoadingEditManufacturer = false

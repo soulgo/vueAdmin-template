@@ -53,7 +53,7 @@
           default() {
             return {
               name: '',
-              authors: '',
+              authors: [],
               publisher: [],
               publication_date: ''
             }
@@ -85,11 +85,10 @@
       },
       watch: {
         state() {
-          getPublishList().then(res => {
+          getPublishList({ page_size: 100 }).then(res => {
             this.publish_list = res.results
           })
-          getAuthorList().then(res => {
-            console.log(res)
+          getAuthorList({ page_size: 100 }).then(res => {
             this.author_list = res.results
           })
         }
