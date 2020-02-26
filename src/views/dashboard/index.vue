@@ -17,9 +17,10 @@
       label="电子邮箱">
     </el-table-column>
     </el-table>
-    <div style="text-align: center;margin-top: 10px" v-show="totalNum>=10">
+    <div style="text-align: center;margin-top: 10px" v-show="totalNum>=5">
     <el-pagination
       background
+      :page-size="5"
       layout="total,prev, pager, next"
       @current-change="handleCurrentChange"
       :total="totalNum">
@@ -50,6 +51,7 @@ export default {
       })
     },
     handleCurrentChange(val) {
+      console.log(val)
       this.params.page = val
       this.fetchData()
     }

@@ -49,6 +49,26 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/usercenter',
+    component: Layout,
+    name: '用户权限管理',
+    meta: { title: '用户权限管理', icon: 'user' },
+    children: [
+      {
+        path: 'user',
+        name: '用户管理',
+        component: () => import('@/views/usercenter/user/index'),
+        meta: { title: '用户管理', icon: 'user' }
+      },
+      {
+        path: 'group',
+        name: '角色管理',
+        component: () => import('@/views/usercenter/group/index'),
+        meta: { title: '角色管理', icon: 'tree' }
+      }
+    ]
+  },
+  {
     path: '/server',
     component: Layout,
     children: [
